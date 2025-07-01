@@ -35,26 +35,26 @@ function authRole(role) {
 
 app.use('/reg', (req, res) => {
     console.log("INSIDE API GATEWAY REGISTRATION ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5001' });
+    proxy.web(req, res, { target: 'http://34.201.127.110:5001' });
 })
 
 
 //REDIRECT TO THE LOGIN(Authentication) MICROSERVICE
 app.use('/auth', (req, res) => {
     console.log("INSIDE API GATEWAY LOGIN ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5002' });
+    proxy.web(req, res, { target: 'http://44.211.226.197:5002' });
 })
 
 //REDIRECT TO Personal Account Microservice 
 app.use('/indv',authToken, authRole('person'),(req, res) => {
     console.log("INSIDE Individual ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5003' });
+    proxy.web(req, res, { target: 'http://l3.82.207.64:5003' });
 })
 
 //REDIRECT TO Group Account MICROSERVICE
 app.use('/group',authToken, authRole('group'), (req, res) => {
     console.log("INSIDE Group ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5004' });
+    proxy.web(req, res, { target: 'http://3.82.109.60:5004' });
 })
 
 app.listen(4000, () => {
