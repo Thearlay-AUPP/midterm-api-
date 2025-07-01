@@ -48,7 +48,7 @@ app.use('/auth', (req, res) => {
 //REDIRECT TO Personal Account Microservice 
 app.use('/indv',authToken, authRole('person'),(req, res) => {
     console.log("INSIDE Individual ROUTE")
-    proxy.web(req, res, { target: 'http://l3.82.207.64:5003' });
+    proxy.web(req, res, { target: 'http://3.82.207.64:5003' });
 })
 
 //REDIRECT TO Group Account MICROSERVICE
